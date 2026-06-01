@@ -50,14 +50,21 @@ Open your browser to **http://localhost:5173** — your app is running!
 
 ## Step 3 — Add a Gemini API Key (for AI Translator)
 
-The AI Translator tab needs a free Google Gemini API key:
+The AI Translator tab needs a free Google Gemini API key stored in a local environment file:
 
 1. Go to **https://aistudio.google.com/app/apikey**
 2. Sign in with your Google account and click **Create API key**
 3. Copy the key
-4. In the running app, go to the **AI Translator** tab and paste the key into the API key field
+4. Open the `.env` file in the project root (create it from `.env.example` if it doesn't exist)
+5. Replace the placeholder value:
 
-Your key is stored only in the browser's memory for the current session — it is never saved or sent anywhere except Google's API.
+```
+VITE_GEMINI_API_KEY=paste_your_key_here
+```
+
+6. Save the file and restart `npm run dev` — the AI Translator will show a green checkmark when the key is loaded
+
+> **Security:** `.env` is listed in `.gitignore` and will never be committed to Git. The `.env.example` file (no real key) is safe to commit as a template.
 
 ---
 
@@ -102,9 +109,15 @@ git push -u origin main
 2. Click **Add New → Project**
 3. Find and import your `sawasdee-trip` repository
 4. Vercel automatically detects Vite — leave all settings as default
-5. Click **Deploy**
+5. Before clicking Deploy, click **Environment Variables** and add:
+   - **Name:** `VITE_GEMINI_API_KEY`
+   - **Value:** your Gemini API key
+   - Leave the environment checkboxes as-is (Production / Preview / Development)
+6. Click **Deploy**
 
 Your app will be live at a URL like `https://sawasdee-trip.vercel.app` within a minute!
+
+> **To update the key later:** Vercel dashboard → your project → Settings → Environment Variables.
 
 **Every time you push code to GitHub, Vercel automatically redeploys.** No manual steps needed.
 
@@ -118,7 +131,11 @@ Your app will be live at a URL like `https://sawasdee-trip.vercel.app` within a 
 4. Set:
    - **Build command:** `npm run build`
    - **Publish directory:** `dist`
-5. Click **Deploy site**
+5. Before deploying, go to **Site configuration → Environment variables** and add:
+   - **Key:** `VITE_GEMINI_API_KEY` — **Value:** your Gemini API key
+6. Click **Deploy site**
+
+> **To update the key later:** Netlify dashboard → your site → Site configuration → Environment variables.
 
 ---
 
@@ -190,8 +207,8 @@ The **Speak** buttons use the native device text-to-speech engine. For the best 
 You have two ways to expand the phrasebook:
 
 ### Option A — AI Translator (in the app)
-1. Open the **AI Translator** tab
-2. Enter your Gemini API key
+1. Make sure `VITE_GEMINI_API_KEY` is set in your `.env` file (see Step 3)
+2. Open the **AI Translator** tab — it will show a green checkmark if the key is loaded
 3. Type any phrase in English (e.g., "I need a wheelchair")
 4. Click **Translate**
 5. Review the result and click **Save to Phrasebook**
@@ -253,7 +270,7 @@ npm run build
 |---|---|
 | `npm install` fails | Make sure Node.js is installed. Try `npm install --legacy-peer-deps` |
 | Voice not working | Install a Thai voice package on your device (see section above) |
-| AI Translator says "failed" | Double-check your Gemini API key. Make sure you have a free quota remaining. |
+| AI Translator says "failed" | Check that `VITE_GEMINI_API_KEY` is set correctly in `.env` (or in your host's env var settings). Make sure you have free quota remaining at aistudio.google.com. |
 | App looks broken after deploy | Run `npm run build` locally first to catch errors before pushing |
 | iOS "Add to Home Screen" doesn't show | Open the site in **Safari** (not Chrome) on iOS, then tap the Share button |
 

@@ -1267,7 +1267,7 @@ Respond only with a raw JSON object — no markdown or extra text — with these
                 {/* Phrase input */}
                 <div className="space-y-1.5">
                   <label className="text-xs font-extrabold text-slate-600 uppercase tracking-wide">Phrase to Translate</label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="text"
                       placeholder="e.g. Do you have vegetarian options? / I need a doctor."
@@ -1279,7 +1279,7 @@ Respond only with a raw JSON object — no markdown or extra text — with these
                     <button
                       disabled={translationLoading || !translateQuery.trim()}
                       onClick={translateWithAI}
-                      className="bg-emerald-900 hover:bg-emerald-800 disabled:bg-slate-300 text-white font-extrabold px-6 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-sm flex items-center gap-2 whitespace-nowrap"
+                      className="bg-emerald-900 hover:bg-emerald-800 disabled:bg-slate-300 text-white font-extrabold px-6 py-3 rounded-2xl text-xs uppercase tracking-wider transition-all shadow-sm flex items-center justify-center gap-2 whitespace-nowrap"
                     >
                       {translationLoading ? (
                         <>
