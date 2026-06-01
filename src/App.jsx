@@ -6,11 +6,12 @@ import AppHeader     from './components/AppHeader';
 import Sidebar       from './components/Sidebar';
 import BottomNav     from './components/BottomNav';
 
-import Dashboard     from './tabs/Dashboard';
-import StudyDeck     from './tabs/StudyDeck';
-import PracticeArena from './tabs/PracticeArena';
-import AITranslator  from './tabs/AITranslator';
-import TripSettings  from './tabs/TripSettings';
+import Dashboard        from './tabs/Dashboard';
+import StudyDeck        from './tabs/StudyDeck';
+import PracticeArena    from './tabs/PracticeArena';
+import AITranslator     from './tabs/AITranslator';
+import TripSettings     from './tabs/TripSettings';
+import ConversationMode from './tabs/ConversationMode';
 
 export default function App() {
   // ── User state ──────────────────────────────────────────────────────────
@@ -245,6 +246,14 @@ export default function App() {
               speakThai={speakThai}
               onSavePhrase={handleSavePhrase}
               showNotification={showNotification}
+            />
+          )}
+
+          {activeTab === 'conversation' && (
+            <ConversationMode
+              geminiApiKey={geminiApiKey}
+              showNotification={showNotification}
+              currentUser={currentUser}
             />
           )}
 

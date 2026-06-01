@@ -1,12 +1,13 @@
-import { Compass, BookOpen, Award, Settings } from 'lucide-react';
+import { Compass, BookOpen, Award, Settings, MessageCircle } from 'lucide-react';
 import { Sparkles } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { tab: 'dashboard',  icon: Compass,  label: 'Home'     },
-  { tab: 'learn',      icon: BookOpen, label: 'Study'    },
-  { tab: 'practice',   icon: Award,    label: 'Practice' },
-  { tab: 'translator', icon: Sparkles, label: 'AI'       },
-  { tab: 'settings',   icon: Settings, label: 'Settings' },
+  { tab: 'dashboard',    icon: Compass,        label: 'Home'     },
+  { tab: 'learn',        icon: BookOpen,       label: 'Study'    },
+  { tab: 'practice',     icon: Award,          label: 'Practice' },
+  { tab: 'translator',   icon: Sparkles,       label: 'AI'       },
+  { tab: 'conversation', icon: MessageCircle,  label: 'Chat'     },
+  { tab: 'settings',     icon: Settings,       label: 'Settings' },
 ];
 
 export default function BottomNav({ activeTab, navTo }) {

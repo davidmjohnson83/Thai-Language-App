@@ -1,12 +1,13 @@
-import { Compass, BookOpen, Award, Settings, Calendar, ChevronRight } from 'lucide-react';
+import { Compass, BookOpen, Award, Settings, Calendar, ChevronRight, MessageCircle } from 'lucide-react';
 import { Sparkles } from 'lucide-react';
 
 const NAV_ITEMS = [
-  { tab: 'dashboard',  icon: Compass,   label: 'Dashboard'      },
-  { tab: 'learn',      icon: BookOpen,  label: 'Study Deck'     },
-  { tab: 'practice',   icon: Award,     label: 'Practice Arena' },
-  { tab: 'translator', icon: Sparkles,  label: 'AI Translator'  },
-  { tab: 'settings',   icon: Settings,  label: 'Trip Settings'  },
+  { tab: 'dashboard',     icon: Compass,         label: 'Dashboard'         },
+  { tab: 'learn',         icon: BookOpen,        label: 'Study Deck'        },
+  { tab: 'practice',      icon: Award,           label: 'Practice Arena'    },
+  { tab: 'translator',    icon: Sparkles,        label: 'AI Translator'     },
+  { tab: 'conversation',  icon: MessageCircle,   label: 'Conversation Mode' },
+  { tab: 'settings',      icon: Settings,        label: 'Trip Settings'     },
 ];
 
 export default function Sidebar({ activeTab, navTo, getDaysToTrip, tripDate, masteryPct, masteredCount, totalPhrases }) {
