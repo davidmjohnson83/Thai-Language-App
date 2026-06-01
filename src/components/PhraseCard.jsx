@@ -1,10 +1,14 @@
-import { Heart, CheckCircle, Volume2 } from 'lucide-react';
+import { useState } from 'react';
+import { Heart, CheckCircle, Volume2, ChevronDown, ChevronUp } from 'lucide-react';
 import { CATEGORY_COLORS } from '../data/constants';
+import { WORD_BREAKDOWNS } from '../data/wordBreakdowns';
 
 export default function PhraseCard({ phrase, userGender, currentUser, isStarred, isMastered, onToggleFavorite, onToggleMastered, onSpeak }) {
-  const phonetic    = userGender === 'male' ? phrase.phoneticMale  : phrase.phoneticFemale;
-  const thaiDisplay = userGender === 'male' ? phrase.thaiMale      : phrase.thaiFemale;
-  const catColor    = CATEGORY_COLORS[phrase.category] || { bg: 'bg-slate-100', text: 'text-slate-600' };
+  const phonetic      = userGender === 'male' ? phrase.phoneticMale  : phrase.phoneticFemale;
+  const thaiDisplay   = userGender === 'male' ? phrase.thaiMale      : phrase.thaiFemale;
+  const catColor      = CATEGORY_COLORS[phrase.category] || { bg: 'bg-slate-100', text: 'text-slate-600' };
+  const wordBreakdown = WORD_BREAKDOWNS[phrase.id] ?? null;
+  const [showBreakdown, setShowBreakdown] = useState(false);
 
   return (
     <div className={`bg-white rounded-3xl p-5 border shadow-sm transition-all duration-300 ${isMastered ? 'border-emerald-200 bg-emerald-50/20' : 'border-slate-100'}`}>
@@ -69,6 +73,32 @@ export default function PhraseCard({ phrase, userGender, currentUser, isStarred,
           <p className="text-[11px] bg-amber-500/10 text-amber-900 px-2.5 py-1.5 rounded-xl font-medium leading-relaxed">
             💡 {phrase.tip}
           </p>
+        )}
+
+        {wordBreakdown && (
+          <div className="pt-1">
+            <button
+              onClick={() => setShowBreakdown(prev => !prev)}
+              className="flex items-center gap-1 text-[10px] font-bold text-indigo-500 uppercase tracking-widest hover:text-indigo-700 transition-colors"
+            >
+              {showBreakdown ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
+              Word Breakdown
+            </button>
+            {showBreakdown && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {wordBreakdown.map((w, i) => (
+                  <div
+                    key={i}
+                    className="text-center bg-indigo-50 border border-indigo-100 rounded-xl px-2.5 py-1.5 min-w-[56px]"
+                  >
+                    <p className="font-mono text-[11px] font-bold text-indigo-700 leading-tight">{w.phonetic}</p>
+                    <p className="text-xs font-bold text-slate-600 thai-script leading-tight">{w.thai}</p>
+                    <p className="text-[10px] text-slate-400 italic leading-tight mt-0.5">{w.meaning}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         )}
       </div>
     </div>

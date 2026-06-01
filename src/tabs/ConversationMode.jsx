@@ -26,7 +26,7 @@ export default function ConversationMode({ geminiApiKey, showNotification, curre
     }
     setIsThinking(true);
 
-    const systemPrompt = `You are a friendly Thai local in a real-world scenario helping an English-speaking tourist practice conversational Thai situations. Respond naturally and briefly (1-2 sentences) as a Thai person would — as a market vendor, taxi driver, restaurant staff, shop owner, hotel receptionist, or similar. Always reply in English only. Be warm, realistic, and keep it short.`;
+    const systemPrompt = `You are a friendly Thai local in a real-world scenario. A tourist is practising speaking Thai to you. They may speak in Thai, or mix Thai with some English words (e.g. "Hotel yoo thee-nai khrap" or "Aroy maak ka"). Understand their meaning regardless of spelling or mixing. Respond naturally and briefly (1-2 sentences) in English only, as a Thai person would — as a market vendor, taxi driver, restaurant staff, shop owner, hotel receptionist, or similar. Be warm, encouraging, and realistic.`;
 
     // Build multi-turn conversation history for context
     const contents = priorMessages.map(m => ({
@@ -73,7 +73,7 @@ export default function ConversationMode({ geminiApiKey, showNotification, curre
     }
 
     const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
+    recognition.lang = 'th-TH';
     recognition.continuous = false;
     recognition.interimResults = false;
 
@@ -126,7 +126,7 @@ export default function ConversationMode({ geminiApiKey, showNotification, curre
           )}
         </div>
         <p className="text-sm text-slate-500 leading-relaxed">
-          Practice real Thai conversations. Press the mic, speak in English, and an AI Thai local will respond.
+          Practice speaking Thai out loud. Press the mic, speak in Thai (mixing in English words is fine!), and an AI Thai local will respond.
           Try ordering food, haggling at the market, or asking for directions!
         </p>
       </div>
@@ -164,9 +164,9 @@ export default function ConversationMode({ geminiApiKey, showNotification, curre
               <div className="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center">
                 <MessageCircle className="h-8 w-8 text-emerald-300" />
               </div>
-              <p className="text-slate-500 font-medium text-sm">Press the mic and start talking</p>
+              <p className="text-slate-500 font-medium text-sm">Press the mic and speak Thai</p>
               <p className="text-slate-400 text-xs max-w-xs">
-                Try: <span className="italic">"Hello"</span>, <span className="italic">"How much is this?"</span>, or <span className="italic">"Can I get a table for two?"</span>
+                Try: <span className="italic">"Sawat-dee khrap"</span>, <span className="italic">"Hotel yoo thee-nai khrap"</span>, or <span className="italic">"Aroy maak ka"</span>
               </p>
             </div>
           ) : (
