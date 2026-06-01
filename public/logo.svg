@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Dark green background -->
+  <rect width="512" height="512" rx="96" fill="#064e3b"/>
+  <!-- Outer compass ring -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="#fbbf24" stroke-width="14" opacity="0.5"/>
+  <!-- Compass points (gold) -->
+  <polygon points="256,100 272,248 256,268 240,248" fill="#fbbf24"/>
+  <polygon points="256,412 240,264 256,244 272,264" fill="#fbbf2466"/>
+  <polygon points="100,256 248,240 268,256 248,272" fill="#fbbf2466"/>
+  <polygon points="412,256 264,272 244,256 264,240" fill="#fbbf24"/>
+  <!-- Center circle -->
+  <circle cx="256" cy="256" r="22" fill="#fbbf24"/>
+  <circle cx="256" cy="256" r="10" fill="#064e3b"/>
+  <!-- Thai flag strip at bottom -->
+  <rect x="90" y="390" width="332" height="14" rx="4" fill="#dc2626" opacity="0.85"/>
+  <rect x="90" y="408" width="332" height="14" rx="4" fill="#f1f5f9" opacity="0.85"/>
+  <rect x="90" y="426" width="332" height="14" rx="4" fill="#1e40af" opacity="0.85"/>
+</svg>
